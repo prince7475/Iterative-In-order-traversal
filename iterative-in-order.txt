@@ -1,0 +1,127 @@
+Write a function that takes in a Binary Tree and traverses it using the in-order 
+\traversal technique but without using recursion. As the tree is being traversed, a
+callback function passed in as an argument to the main function should be called 
+on each node (i.e. callback(currentNode)). Each Binary Tree node has a value
+stored in a property called "value," a parent node in a property called "parent," 
+and two children nodes stored in properties called "left" and "right," respectively.
+Children nodes can either be Binary Tree nodes themselves or the None (null) value.
+Sample input:
+     1
+    / \
+   2   3
+   /   / \
+  4    6 7
+   \
+    9
+Sample output:
+callback(4)
+callback(9)
+callback(2)
+callback(1)
+callback(6)
+callback(3)
+callback(7)
+
+function iterativeInOrderTraversal(tree,callback){
+  let previousNode = null
+  let currentNode = tree
+  while(currentNode !== null){
+    let nextNode;
+    if(previousNode === currentNode.parent || previousNode === null){
+      if(currentNode.left){
+        nextNode = currentNode.left
+      }else {
+        callback(currentNode)
+        nextNode = currentNode.right ? currentNode.right : currentNode.parent
+      }
+    }else if(previousNode === currentNode.left){
+      callback(currentNode)
+      nextNode = currentNode.right ? currentNode.right : currentNode.parent
+    }else {
+      nextNode = currentNode.parent
+    }
+    
+    previousNode = currentNode
+    currentNode = nextNode
+  }
+  
+}
+
+if(prev === null || prev === curr.parent)
+  if(curr.left){
+    // go left
+  }else {
+    // callback
+    // go right or go up
+  }
+else if(prev === curr.left)
+  // callback 
+  // go right or go up
+else 
+  // go up
+
+
+
+
+function iterativeInOrderTraversal(tree, callback) {
+  let prevNode = null
+  let currNode = tree
+  while(currNode !== null){
+    let nextNode;
+      if(prevNode === null || prevNode === currNode.parent){
+        if(currNode.left){
+          nextNode = currNode.left
+        }else {
+          callback(currNode)
+          nextNode = currNode.right ? currNode.right : currNode.parent
+        }
+      }else if(prevNode === currNode.left){
+        callback(currNode)
+        nextNode = currNode.right ? currNode.right : currNode.parent 
+      }else if(currNode.right === prevNode){
+        nextNode = currNode.parent
+      }
+    
+    prevNode = currNode
+    currNode = nextNode
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
